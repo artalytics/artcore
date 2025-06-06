@@ -1,0 +1,51 @@
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+name: Update-Version
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check out the current (private) repository
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      # Copy the DESCRIPTION file to a temporary directory
+      - name: Copy DESCRIPTION file
+        run: |
+          mkdir -p package_temp/artcore
+          cp DESCRIPTION package_temp/artcore/
+
+      # Check out the public repository
+      - name: Checkout public repo
+        uses: actions/checkout@v4
+        with:
+          repository: r-data-science/artalytics-info
+          path: public_repo
+          token: ${{ secrets.GH_PAT }}
+
+      # Copy the DESCRIPTION file from the private repository to the appropriate directory in the public repository
+      - name: Copy to public repo
+        run: |
+          mkdir -p public_repo/package/artcore
+          cp -r package_temp/artcore public_repo/package/
+
+      # Commit and push the changes to the public repository
+      - name: Commit and push changes
+        run: |
+          cd public_repo
+          git config --global user.email "bfatemi07@gmail.com"
+          git config --global user.name "Bobby Fatemi"
+          git add package/artcore/DESCRIPTION
+          git commit -m "Update DESCRIPTION for artcore"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}

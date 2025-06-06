@@ -1,0 +1,27 @@
+Package: artcore
+Title: Platform Core Tools
+Version: 0.6.1
+Authors@R: 
+    person(given = "Bobby",
+           family = "Fatemi",
+           role = c("aut", "cre"),
+           email = "bfatemi07@gmail.com")
+Description: Package containing core tools needed in the foundation of the artalytics platform code.
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.2
+URL: https://github.com/r-data-science/artcore
+BugReports: https://github.com/r-data-science/artcore/issues
+Config/testthat/edition: 3
+Imports:
+  rdstools,
+  rpgconn
+Remotes:
+  r-data-science/rdstools,
+  r-data-science/rpgconn
+Depends: 
+  R (>= 4.1.0)
+Suggests:
+  covr,
+  testthat (>= 3.0.0)
