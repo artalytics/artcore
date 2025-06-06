@@ -3,6 +3,7 @@
 export(..dbc)
 export(..dbd)
 export(..dir_ad)
+export(..is_demo)
 importFrom(rdstools,log_suc)
 importFrom(rpgconn,dbc)
 importFrom(rpgconn,dbd)

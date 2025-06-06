@@ -37,3 +37,10 @@ NULL
   rdstools::log_inf(paste0("Disconnected from DB (", cfg, ")"))
   invisible(NULL)
 }
+
+
+#' @describeIn utils tbd
+#' @export
+..is_demo <- function() {
+  isTRUE(as.logical(Sys.getenv("ARTDEMO", "FALSE")))
+}

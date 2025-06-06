@@ -5,6 +5,7 @@
 \alias{..dir_ad}
 \alias{..dbc}
 \alias{..dbd}
+\alias{..is_demo}
 \title{Package utils}
 \usage{
 ..dir_ad()
@@ -12,6 +13,8 @@
 ..dbc()
 
 ..dbd(cn)
+
+..is_demo()
 }
 \arguments{
 \item{cn}{connection object}
@@ -26,5 +29,7 @@ Package utils
 \item \code{..dbc()}: tbd
 
 \item \code{..dbd()}: tbd
+
+\item \code{..is_demo()}: tbd
 
 }}
