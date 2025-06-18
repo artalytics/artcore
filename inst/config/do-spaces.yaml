@@ -1,0 +1,52 @@
+buckets:
+  public.artalytics:
+    endpoints:
+      subdomain: https://public.artalytics.art
+      origin: https://public.artalytics.sfo3.digitaloceanspaces.com
+      cdn: https://public.artalytics.sfo3.cdn.digitaloceanspaces.com
+    access:
+      - scope: read
+        key_name: read-public-assets
+        key_id: DO801WYB34KBG47CMXTZ
+        key: !expr Sys.getenv("ART_READ_PUBLIC_KEY")
+
+  private.artalytics:
+    endpoints:
+      subdomain: https://private.artalytics.art
+      origin: https://private.artalytics.sfo3.digitaloceanspaces.com
+      cdn: https://private.artalytics.sfo3.cdn.digitaloceanspaces.com
+    access:
+      - scope: read
+        key_name: read-artalytics
+        key_id: DO801348LY63WZNPHQMH
+        key: !expr Sys.getenv("ART_READ_PRIVATE_KEY")
+      - scope: write
+        key_name: write-artalytics
+        key_id: DO801XZDX8K4CMQFKMWH
+        key: !expr Sys.getenv("ART_WRITE_PRIVATE_KEY")
+
+  certificates.art:
+    endpoints:
+      subdomain: https://cdn.certificates.art
+      origin: https://certificates.art.sfo3.digitaloceanspaces.com
+      cdn: https://certificates.art.sfo3.cdn.digitaloceanspaces.com
+    access:
+      - scope: read
+        key_name: read-certificates
+        key_id: DO801Z3374BZZLD83KMN
+        key: !expr Sys.getenv("ART_READ_CERTS_KEY")
+      - scope: write
+        key_name: write-certificates
+        key_id: DO801X73UBGUPW8UYYAF
+        key: !expr Sys.getenv("ART_WRITE_CERTS_KEY")
+
+  vault.artalytics:
+    endpoints:
+      subdomain: https://vault.artalytics.art
+      origin: https://vault.artalytics.sfo3.digitaloceanspaces.com
+      cdn: https://vault.artalytics.sfo3.cdn.digitaloceanspaces.com
+    access:
+      - scope: write
+        key_name: write-vault-upload
+        key_id: DO801VCWPQJ2PTF923RX
+        key: !expr Sys.getenv("ART_WRITE_VAULT_KEY")

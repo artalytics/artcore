@@ -15,13 +15,18 @@ URL: https://github.com/r-data-science/artcore
 BugReports: https://github.com/r-data-science/artcore/issues
 Config/testthat/edition: 3
 Imports:
-  rdstools,
-  rpgconn
+    fs,
+    paws.storage,
+    rdstools,
+    rpgconn,
+    utils,
+    yaml
 Remotes:
   r-data-science/rdstools,
   r-data-science/rpgconn
 Depends: 
   R (>= 4.1.0)
 Suggests:
-  covr,
-  testthat (>= 3.0.0)
+    covr,
+    testthat (>= 3.0.0),
+    withr
