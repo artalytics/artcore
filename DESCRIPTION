@@ -1,6 +1,6 @@
 Package: artcore
 Title: Platform Core Tools
-Version: 0.1.1
+Version: 0.2.9
 Authors@R: 
     person(given = "Bobby",
            family = "Fatemi",
@@ -11,16 +11,18 @@ License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.3.2
-URL: https://github.com/r-data-science/artcore
-BugReports: https://github.com/r-data-science/artcore/issues
+URL: https://github.com/artalytics/artcore
+BugReports: https://github.com/artalytics/artcore/issues
 Config/testthat/edition: 3
 Imports:
-    fs,
     paws.storage,
     rdstools,
     rpgconn,
-    utils,
-    yaml
+    httr,
+    fs,
+    stringr,
+    uuid,
+    paws
 Remotes:
   r-data-science/rdstools,
   r-data-science/rpgconn

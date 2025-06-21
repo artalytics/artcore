@@ -1,52 +1,52 @@
 buckets:
-  public.artalytics:
+  art-public:
+    description: contains low‑res thumbnails, css, site assets
+    policy: public-read
     endpoints:
-      subdomain: https://public.artalytics.art
-      origin: https://public.artalytics.sfo3.digitaloceanspaces.com
-      cdn: https://public.artalytics.sfo3.cdn.digitaloceanspaces.com
+      subdomain: https://cdn.artalytics.art
+      origin: https://art-public.sfo3.digitaloceanspaces.com
+      cdn: https://art-public.sfo3.cdn.digitaloceanspaces.com
     access:
-      - scope: read
-        key_name: read-public-assets
-        key_id: DO801WYB34KBG47CMXTZ
-        key: !expr Sys.getenv("ART_READ_PUBLIC_KEY")
-
-  private.artalytics:
-    endpoints:
-      subdomain: https://private.artalytics.art
-      origin: https://private.artalytics.sfo3.digitaloceanspaces.com
-      cdn: https://private.artalytics.sfo3.cdn.digitaloceanspaces.com
-    access:
-      - scope: read
-        key_name: read-artalytics
-        key_id: DO801348LY63WZNPHQMH
-        key: !expr Sys.getenv("ART_READ_PRIVATE_KEY")
       - scope: write
-        key_name: write-artalytics
-        key_id: DO801XZDX8K4CMQFKMWH
-        key: !expr Sys.getenv("ART_WRITE_PRIVATE_KEY")
+        key_id: DO00KPUXQBXYKTULMGN7
+        key: !expr Sys.getenv("ART_BUCKETS_WRITE_KEY")
 
-  certificates.art:
+  art-coa:
+    description: contains certificate files (PDFs/JPEGs)
+    policy: public-read
     endpoints:
       subdomain: https://cdn.certificates.art
-      origin: https://certificates.art.sfo3.digitaloceanspaces.com
-      cdn: https://certificates.art.sfo3.cdn.digitaloceanspaces.com
+      origin: https://art-coa.sfo3.digitaloceanspaces.com
+      cdn: https://art-coa.sfo3.cdn.digitaloceanspaces.com
+    access:
+      - scope: write
+        key_id: DO00KPUXQBXYKTULMGN7
+        key: !expr Sys.getenv("ART_BUCKETS_WRITE_KEY")
+
+  art-data:
+    description: contains files, images, and other assets used by platform
+    policy: private
+    endpoints:
+      origin: https://art-data.sfo3.digitaloceanspaces.com
+      cdn: https://art-data.sfo3.cdn.digitaloceanspaces.com
     access:
       - scope: read
-        key_name: read-certificates
-        key_id: DO801Z3374BZZLD83KMN
-        key: !expr Sys.getenv("ART_READ_CERTS_KEY")
+        key_id:  DO801KZVR3X3UWDE6GGN
+        key: !expr Sys.getenv("ART_BUCKETS_READ_KEY")
       - scope: write
-        key_name: write-certificates
-        key_id: DO801X73UBGUPW8UYYAF
-        key: !expr Sys.getenv("ART_WRITE_CERTS_KEY")
+        key_id: DO00KPUXQBXYKTULMGN7
+        key: !expr Sys.getenv("ART_BUCKETS_WRITE_KEY")
 
-  vault.artalytics:
+  art-vault:
+    description: contains the file bundles uploaded by artists
+    policy: private
     endpoints:
-      subdomain: https://vault.artalytics.art
-      origin: https://vault.artalytics.sfo3.digitaloceanspaces.com
-      cdn: https://vault.artalytics.sfo3.cdn.digitaloceanspaces.com
+      origin: https://art-vault.sfo3.digitaloceanspaces.com
+      cdn: https://art-vault.sfo3.cdn.digitaloceanspaces.com
     access:
+      - scope: read
+        key_id: DO801KZVR3X3UWDE6GGN
+        key: !expr Sys.getenv("ART_BUCKETS_READ_KEY")
       - scope: write
-        key_name: write-vault-upload
-        key_id: DO801VCWPQJ2PTF923RX
-        key: !expr Sys.getenv("ART_WRITE_VAULT_KEY")
+        key_id: DO00KPUXQBXYKTULMGN7
+        key: !expr Sys.getenv("ART_BUCKETS_WRITE_KEY")
